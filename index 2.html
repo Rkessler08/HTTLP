@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Literary Lenses: Geography & Season</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    .tab-btn.active {
+      border-bottom: 4px solid #2563eb;
+      color: #2563eb;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-slate-900 text-white py-6 px-4 shadow-md text-center">
+    <h1 class="text-3xl font-bold">How to Read Literature Like a Professor</h1>
+    <p class="text-slate-300 text-sm mt-1">Interactive Study Companion: Chapters 19 & 20</p>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="max-w-4xl mx-auto mt-6 bg-white shadow rounded-lg overflow-hidden">
+    <div class="flex border-b border-slate-200" role="tablist">
+      <button id="tab-ch19" onclick="switchTab('ch19')" role="tab" class="tab-btn active w-1/2 py-4 text-center font-medium hover:bg-slate-50 transition">
+        Ch. 19: Geography Matters...
+      </button>
+      <button id="tab-ch20" onclick="switchTab('ch20')" role="tab" class="tab-btn w-1/2 py-4 text-center font-medium hover:bg-slate-50 transition">
+        Ch. 20: ...So Does Season
+      </button>
+    </div>
+
+    <!-- Chapter 19 Content -->
+    <div id="content-ch19" class="p-6">
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Core Concept: Geography is Psychology</h2>
+        <p class="text-slate-600 leading-relaxed">
+          In literature, geography isn't just landscape; it is emotion, character development, social class, and the subconscious. Click the directions below to explore how physical spatial dynamics dictate story themes.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <button onclick="revealGeo('high',this)" class="reveal-btn p-4 bg-blue-50 border border-blue-200 rounded-lg text-left hover:bg-blue-100 transition">
+          <h3 class="font-bold text-blue-900">🏔️ High Elevation</h3>
+          <p class="text-xs text-blue-700 mt-1">Click to reveal meaning</p>
+        </button>
+        <button onclick="revealGeo('low',this)" class="reveal-btn p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-left hover:bg-emerald-100 transition">
+          <h3 class="font-bold text-emerald-900">🌿 Low Elevation</h3>
+          <p class="text-xs text-emerald-700 mt-1">Click to reveal meaning</p>
+        </button>
+        <button onclick="revealGeo('south',this)" class="reveal-btn p-4 bg-amber-50 border border-amber-200 rounded-lg text-left hover:bg-amber-100 transition">
+          <h3 class="font-bold text-amber-900">🧭 Going South</h3>
+          <p class="text-xs text-amber-700 mt-1">Click to reveal meaning</p>
+        </button>
+        <button onclick="revealGeo('north',this)" class="reveal-btn p-4 bg-sky-50 border border-sky-200 rounded-lg text-left hover:bg-sky-100 transition">
+          <h3 class="font-bold text-sky-900">&#10052;&#65039; Going North</h3>
+          <p class="text-xs text-sky-700 mt-1">Click to reveal meaning</p>
+        </button>
+      </div>
+
+      <div aria-live="polite" id="geo-display" class="reveal-btn p-4 bg-slate-100 border-l-4 border-slate-500 rounded text-slate-700 mb-8 hidden"></div>
+
+      <section class="mb-8">
+        <h3 class="text-xl font-bold text-slate-900 mb-3">Literary Examples</h3>
+        <div class="space-y-3">
+          <div class="reveal-btn p-4 bg-white border rounded shadow-sm">
+            <span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Class Text</span>
+            <h4 class="font-bold mt-1">The Great Gatsby (Fitzgerald)</h4>
+            <p class="text-sm text-slate-600 mt-1">The Valley of Ashes sits in a low, dusty depression, physically and symbolically representing moral decay and poverty.</p>
+          </div>
+          <div class="reveal-btn p-4 bg-white border rounded shadow-sm">
+            <span class="text-xs font-bold bg-pink-100 text-pink-800 px-2 py-1 rounded">Film</span>
+            <h4 class="font-bold mt-1">Frozen (Disney)</h4>
+            <p class="text-sm text-slate-600 mt-1">Elsa flees to a remote, snowy mountaintop and builds an ice palace. The high elevation stands for isolation and distance from human messiness, and for her struggle between purity and fear.</p>
+          </div>
+          <div class="p-4 bg-white border rounded shadow-sm">
+            <span class="text-xs font-bold bg-slate-100 text-slate-800 px-2 py-1 rounded">Classic Literature</span>
+            <h4 class="font-bold mt-1">The Old Man and the Sea (Hemingway)</h4>
+            <p class="text-sm text-slate-600 mt-1">Santiago sails far out past the safety of shore into the deep water of the Gulf Stream. Out there, alone, he faces the marlin and his own limits.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-ch19" class="bg-slate-50 p-4 border rounded-lg"></section>
+    </div>
+
+    <!-- Chapter 20 Content -->
+    <div id="content-ch20" class="p-6 hidden">
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Core Concept: The Human Seasonal Cycle</h2>
+        <p class="text-slate-600 leading-relaxed">
+          Seasons are the primary biological rhythm in literature. Select a season below to inspect its core symbolic associations.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <button onclick="revealSeason('spring',this)" class="reveal-btn p-3 bg-green-100 text-green-900 font-bold rounded text-center hover:bg-green-200">🌱 Spring</button>
+        <button onclick="revealSeason('summer',this)" class="reveal-btn p-3 bg-yellow-100 text-yellow-900 font-bold rounded text-center hover:bg-yellow-200">☀️ Summer</button>
+        <button onclick="revealSeason('autumn',this)" class="reveal-btn p-3 bg-orange-100 text-orange-900 font-bold rounded text-center hover:bg-orange-200">🍂 Autumn</button>
+        <button onclick="revealSeason('winter',this)" class="reveal-btn p-3 bg-blue-100 text-blue-900 font-bold rounded text-center hover:bg-blue-200">❄️ Winter</button>
+      </div>
+
+      <div aria-live="polite" id="season-display" class="reveal-btn p-4 bg-slate-100 border-l-4 border-slate-500 rounded text-slate-700 mb-8 hidden"></div>
+
+      <section class="mb-8">
+        <h3 class="text-xl font-bold text-slate-900 mb-3">Literary Examples</h3>
+        <div class="space-y-3">
+          <div class="p-4 bg-white border rounded shadow-sm">
+            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">Winter</span>
+            <h4 class="font-bold mt-1">Beowulf</h4>
+            <p class="text-sm text-slate-600 mt-1">Severe northern winters of freezing seas, icy gales, and barren land stand for vulnerability, isolation, and the looming threat of death. Grendel and his mother haunt dark, frozen fens, mirroring the cold mortality the warrior culture constantly battles.</p>
+          </div>
+          <div class="p-4 bg-white border rounded shadow-sm">
+            <span class="text-xs font-bold bg-orange-100 text-orange-800 px-2 py-1 rounded">Autumn to Winter</span>
+            <h4 class="font-bold mt-1">Harry Potter and the Goblet of Fire (Rowling)</h4>
+            <p class="text-sm text-slate-600 mt-1">As autumn fades into winter, the mood shifts. The Yule Ball in a freezing winter setting masks underlying social and emotional tensions. The story then turns darker still, ending Harry's innocent childhood and ushering in an era of loss, fear, and Voldemort's rebirth.</p>
+          </div>
+          <div class="p-4 bg-white border rounded shadow-sm">
+            <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded">Full Cycle</span>
+            <h4 class="font-bold mt-1">Grendel (Gardner)</h4>
+            <p class="text-sm text-slate-600 mt-1">The novel is structured around the seasonal cycle, starting in spring with the ram (raw biological instinct and new beginnings). It moves through the months as Grendel's disillusionment deepens and ends in the dead of winter, matching his confrontation with Beowulf and his physical and existential death.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-ch20" class="bg-slate-50 p-4 border rounded-lg"></section>
+    </div>
+  </div>
+
+  <script>
+    const tabs=['ch19','ch20'];
+    function switchTab(tab){
+      tabs.forEach(t=>{
+        document.getElementById('content-'+t).classList.toggle('hidden',t!==tab);
+        const b=document.getElementById('tab-'+t);
+        b.classList.toggle('active',t===tab);
+        b.setAttribute('aria-selected',t===tab);
+      });
+    }
+    function mark(btn){
+      btn.parentElement.querySelectorAll('.reveal-btn').forEach(b=>b.classList.remove('ring-2','ring-slate-700'));
+      if(btn) btn.classList.add('ring-2','ring-slate-700');
+    }
+    function revealGeo(type,btn){
+      const d={
+        high:"<strong>High Elevation:</strong> Spiritual purity, isolation, clear vision, snow, ice, and distance from human messiness.",
+        low:"<strong>Low Elevation:</strong> Swamps, fog, crowds, heat, physical passion, darkness, and the subconscious.",
+        south:"<strong>Going South:</strong> Running wild, shedding social inhibitions, and meeting raw emotional or subconscious drives.",
+        north:"<strong>Going North:</strong> Often escape and freedom, or a push toward idealism, but also colder, harsher tests of character."
+      };
+      const box=document.getElementById('geo-display');
+      box.classList.remove('hidden'); box.innerHTML=d[type]; mark(btn);
+    }
+    function revealSeason(type,btn){
+      const d={
+        spring:"<strong>Spring:</strong> Birth, youth, fertility, renewal, childhood, and promise.",
+        summer:"<strong>Summer:</strong> Passion, romance, peak vitality, fulfillment, and adulthood.",
+        autumn:"<strong>Autumn:</strong> Harvest, decline, middle age, reward, and impending death.",
+        winter:"<strong>Winter:</strong> Death, stagnation, coldness, old age, and isolation."
+      };
+      const box=document.getElementById('season-display');
+      box.classList.remove('hidden'); box.innerHTML=d[type]; mark(btn);
+    }
+
+    const quizzes={
+      ch19:[
+        {q:"The Valley of Ashes in The Great Gatsby sits in a low, dusty hollow. What does that suggest?",o:["Spiritual clarity","Moral decay and poverty","Romantic fulfillment","Safe retreat from society"],a:1,e:"Low, bleak places tend to signal decline and the less pure side of life."},
+        {q:"Which meaning is most associated with high elevation?",o:["Fog and subconscious desire","Crowds and heat","Spiritual purity and clear vision","Social chaos"],a:2,e:"Heights suggest purity, isolation, and distance from human messiness."},
+        {q:"A character leaves a rigid high-society home for a swampy southern river valley. Symbolically, what is happening?",o:["Attaining spiritual clarity","Running wild and confronting subconscious desires","Rising in social class","Returning to childhood innocence"],a:1,e:"Going south and down signals shedding inhibitions and meeting raw drives."},
+        {q:"In Frozen, Elsa flees to a remote snowy mountaintop. What does the high elevation suggest?",o:["Fog and subconscious desire","Isolation and distance from other people","Crowds and heat","Social chaos"],a:1,e:"Heights and snow suggest isolation, purity, and distance from human messiness."},
+        {q:"Which setting would an author most likely use for a scene of fog, heat, and physical passion?",o:["A mountaintop","A low, swampy valley","A snowy pass","A high tower"],a:1,e:"Low elevation pairs with swamps, fog, heat, and passion."}
+      ],
+      ch20:[
+        {q:"Which season most often stands for birth, youth, and renewal?",o:["Autumn","Winter","Spring","Summer"],a:2,e:"Spring is the season of fertility, childhood, and promise."},
+        {q:"A story's climax lands on a blistering hot August afternoon. Which pattern is in play?",o:["Peak passion and intensity (Summer)","Stagnation and death (Winter)","Birth and promise (Spring)","Harvest and reward (Autumn)"],a:0,e:"Summer heat matches passion and peak vitality."},
+        {q:"Grendel is built around a full seasonal cycle that starts in spring. Where does it end?",o:["In summer, at peak passion","In the dead of winter, matching Grendel's death","In spring again, with rebirth","In autumn, with harvest"],a:1,e:"The novel builds to winter, matching Grendel's final confrontation and his death."},
+        {q:"Winter in a story most often points toward which idea?",o:["Fertility","Passion","Death, stagnation, and isolation","Childhood"],a:2,e:"Winter is cold and still, linked to old age and death."},
+        {q:"In Beowulf, the freezing seas and frozen fens mainly represent what?",o:["Romance and fulfillment","Vulnerability, isolation, and the threat of death","Birth and renewal","Harvest and reward"],a:1,e:"Winter in the poem stands for human vulnerability and looming mortality."}
+      ]
+    };
+    function renderQuiz(key){
+      const box=document.getElementById('quiz-'+key), qs=quizzes[key];
+      let score=0, done=0;
+      box.innerHTML='<h3 class="font-bold text-lg mb-1">Check Your Understanding</h3><p class="text-sm text-slate-500 mb-4" id="score-'+key+'">Score: 0 / '+qs.length+'</p>';
+      qs.forEach((item,qi)=>{
+        const wrap=document.createElement('div'); wrap.className='mb-5';
+        const p=document.createElement('p'); p.className='text-sm font-semibold mb-2'; p.textContent=(qi+1)+'. '+item.q; wrap.appendChild(p);
+        const fb=document.createElement('p'); fb.className='text-sm hidden'; fb.setAttribute('aria-live','polite');
+        const btns=item.o.map((t,oi)=>{
+          const b=document.createElement('button');
+          b.className='w-full text-left p-2 mb-2 bg-white border rounded hover:bg-slate-100 text-sm';
+          b.textContent=String.fromCharCode(65+oi)+') '+t;
+          b.onclick=()=>{
+            btns.forEach((x,xi)=>{x.disabled=true; x.classList.remove('hover:bg-slate-100');
+              if(xi===item.a) x.classList.add('bg-green-100','border-green-500');
+              else if(xi===oi) x.classList.add('bg-red-100','border-red-400');});
+            const ok=oi===item.a; if(ok) score++; done++;
+            fb.className='text-sm font-semibold '+(ok?'text-green-700':'text-red-700');
+            fb.textContent=(ok?'Correct! ':'Not quite. ')+item.e;
+            document.getElementById('score-'+key).textContent='Score: '+score+' / '+qs.length;
+            if(done===qs.length){
+              const r=document.createElement('button');
+              r.className='mt-2 px-4 py-2 bg-blue-600 text-white rounded text-sm font-bold hover:bg-blue-700';
+              r.textContent='Retry quiz ('+score+'/'+qs.length+')'; r.onclick=()=>renderQuiz(key);
+              box.appendChild(r);
+            }
+          };
+          wrap.appendChild(b); return b;
+        });
+        wrap.appendChild(fb); box.appendChild(wrap);
+      });
+    }
+    tabs.forEach(renderQuiz);
+  </script>
+</body>
+</html>
